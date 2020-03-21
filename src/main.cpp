@@ -11,7 +11,7 @@ const int BUFFER_SIZE = JSON_OBJECT_SIZE(10);
 #define MQTT_MAX_PACKET_SIZE 512
 
 /******************************** OTHER GLOBALS *******************************/
-long state = -1;
+int state = -1;
 
 WiFiClient espClient;
 PubSubClient client(espClient);
@@ -43,7 +43,6 @@ void setup_wifi() {
 void sendState() {
   StaticJsonDocument<BUFFER_SIZE> jsonBuffer;
 
-  // const char *payload = (char *)state;
   char payload[1];
   sprintf(payload, "%d", state);
 
@@ -82,7 +81,7 @@ void updateState() {
       Serial.println("Motion detected");
       digitalWrite(LED_BUILTIN, LOW); // Turn the status LED on
     } else {
-      Serial.println("No Motion");        
+      Serial.println("No Motion");
       digitalWrite(LED_BUILTIN, HIGH); // Turn the status LED off
     }
     state = newState;
