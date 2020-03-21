@@ -41,7 +41,7 @@ void setup_wifi() {
 }
 
 void sendState() {
-  StaticJsonBuffer<BUFFER_SIZE> jsonBuffer;
+  StaticJsonDocument<BUFFER_SIZE> jsonBuffer;
 
   // const char *payload = (char *)state;
   char payload[1];
